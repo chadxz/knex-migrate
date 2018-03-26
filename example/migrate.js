@@ -17,6 +17,14 @@ async function run () {
   await knexMigrate('rollback', {}, log)
   await knexMigrate('redo', {}, log)
   await knexMigrate('down', { to: 0 }, log)
+  await knexMigrate('up', { only: '20170427093232' }, log)
+  await knexMigrate('up', { only: '20170427093232' }, log)
+  // => [...]
+  // Migration is not pending: 20170427093232_add_users.js
+  // npm ERR! code ELIFECYCLE
+  // npm ERR! errno 1
+  // npm ERR! example@1.0.0 programmatic: `node ./migrate.js`
+  // npm ERR! Exit status 1
 }
 
 run().then(
